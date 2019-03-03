@@ -19,20 +19,10 @@ import java.util.Map;
 public class VolleyGsonRequest<T> extends JsonRequest<T> {
     private Class<T> clazz;
     private Map<String, String> headers = new HashMap<>();
-    private String mRequest = "";
     public VolleyGsonRequest(String url, Class<T> cls, JSONObject jsonRequest, Listener<T> listener, ErrorListener errorListener) {
         super(jsonRequest == null || jsonRequest.length() == 0 ? Request.Method.GET : Request.Method.POST, url,
                 (jsonRequest == null) ? null : jsonRequest.toString(), listener, errorListener);
         clazz = cls;
-        mRequest = (jsonRequest == null) ? null : jsonRequest.toString();
-    }
-
-    private String getRequest() {
-        return mRequest;
-    }
-
-    public void setHeader(Map<String, String> header) {
-        this.headers = header;
     }
 
     @Override
